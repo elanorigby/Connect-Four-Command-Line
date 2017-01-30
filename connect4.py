@@ -77,7 +77,7 @@ if __name__ == '__main__':
             row = int(input('{}\'s turn: '.format(RED if turn == RED else YELLOW))) - 1
             g.insert(int(row), turn)
             turn = YELLOW if turn == RED else RED
-        except ValueError:
+        except (ValueError, NameError, AttributeError):
             print("Sorry, you need a number from 1 to 7.\n")
         except IndexError:
             print("Sorry, you can't put a marker there.\n")
