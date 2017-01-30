@@ -2,10 +2,14 @@
 from __future__ import print_function
 from itertools import groupby, chain
 import sys
+import os
 
 NONE = '.'
 RED = 'X'
 YELLOW = 'O'
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def diagonalsPos (matrix, cols, rows):
     """Get positive diagonals, going from bottom-left to top-right."""
@@ -77,9 +81,13 @@ if __name__ == '__main__':
             row = int(input('{}\'s turn: '.format(RED if turn == RED else YELLOW))) - 1
             g.insert(int(row), turn)
             turn = YELLOW if turn == RED else RED
+            clear_screen()
         except ValueError:
+            clear_screen()
             print("Sorry, you need a number from 1 to 7.\n")
         except IndexError:
+            clear_screen()
             print("Sorry, you can't put a marker there.\n")
         except RuntimeError as e:
+            clear_screen()
             print(e)
